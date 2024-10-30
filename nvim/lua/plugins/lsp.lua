@@ -34,7 +34,7 @@ return {
                 "groovyls",
                 "jsonls",
                 "java_language_server",
-                "tsserver",
+                "ts_ls",
                 "kotlin_language_server",
                 "texlab",
                 "marksman",

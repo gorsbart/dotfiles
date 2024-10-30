@@ -11,6 +11,7 @@ return {
 		vim.keymap.set('n', '<C-j>', builtin.find_files, {})
 		vim.keymap.set('n', '<C-k>', builtin.git_files, {})
         vim.keymap.set('n', '<C-h>', builtin.live_grep, {})
+        vim.keymap.set('n', '<C-b>', builtin.git_branches, {})
 		vim.keymap.set('n', '<leader>gg', function ()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") });
 		end)
