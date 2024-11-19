@@ -8,14 +8,17 @@ return {
 
 		local builtin = require('telescope.builtin')
 
-		vim.keymap.set('n', '<C-j>', builtin.find_files, {})
-		vim.keymap.set('n', '<C-k>', builtin.git_files, {})
-        vim.keymap.set('n', '<C-h>', builtin.live_grep, {})
-        vim.keymap.set('n', '<C-b>', builtin.git_branches, {})
+		vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch for [F]iles'})
+		vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[S]earch for [G]it files'})
+    vim.keymap.set('n', '<leader>si', builtin.live_grep, { desc = '[S]earch [I]n files'})
+    vim.keymap.set('v', '<leader>si', builtin.grep_string, { desc = '[S]earch selection [I]n files'})
+    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps'})
+    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Search opened buffers'})
 		vim.keymap.set('n', '<leader>gg', function ()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") });
 		end)
-		vim.keymap.set('n', '<C-l>', builtin.marks, {})
+    vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks'})
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp'})
 	end
 
 
