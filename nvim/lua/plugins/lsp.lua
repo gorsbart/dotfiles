@@ -27,9 +27,9 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "gopls",
-                "clangd",
-                "cmake",
+--                "gopls",
+--                "clangd",
+--                "cmake",
                 "grammarly",
                 "groovyls",
                 "jsonls",
@@ -38,8 +38,8 @@ return {
                 "kotlin_language_server",
                 "texlab",
                 "marksman",
-                "jedi_language_server",
-                "sqls",
+--                "jedi_language_server",
+--                "sqls",
                 "bashls",
 
             },
