@@ -1,14 +1,27 @@
 return {
   'stevearc/oil.nvim',
   opts = {},
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { { "echasnovski/mini.icons", opts = {} }, 'nvim-telescope/telescope.nvim' },
   config = function ()
-      require("oil").setup({
+
+      local builtin = require('telescope.builtin')
+      local oil = require("oil")
+      oil.setup({
           default_file_explorer = true,
           skip_confirm_for_simple_edits = true,
           delete_to_trash = true,
+          watch_for_changes = false,
           keymaps = {
-                ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" }
+                ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+                ["<leader>sf"] = { callback = function (bufnr)
+                    builtin.find_files({ cwd = oil.get_current_dir(bufnr) })
+                end, desc = "[S]earch for [F]iles inside current directory"},
+                ["<leader>si"] = { callback = function (bufnr)
+                    builtin.live_grep({ cwd = oil.get_current_dir(bufnr) })
+                end, desc = "[S]earch [I]n files in current directory"},
+                ["<leader>sg"] = { callback = function (bufnr)
+                    builtin.git_files({ cwd = oil.get_current_dir(bufnr) })
+                end, desc = "[S]earch for [G]it files in current directory"},
           },
            git = {
             -- Return true to automatically git add/mv/rm files
