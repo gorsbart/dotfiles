@@ -13,15 +13,15 @@ return {
           watch_for_changes = false,
           keymaps = {
                 ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-                ["<leader>sf"] = { callback = function (bufnr)
+                ["<leader>shf"] = { callback = function (bufnr)
                     builtin.find_files({ cwd = oil.get_current_dir(bufnr) })
-                end, desc = "[S]earch for [F]iles inside current directory"},
-                ["<leader>si"] = { callback = function (bufnr)
+                end, desc = "[S]earch [H]ere for [F]iles"},
+                ["<leader>shi"] = { callback = function (bufnr)
                     builtin.live_grep({ cwd = oil.get_current_dir(bufnr) })
-                end, desc = "[S]earch [I]n files in current directory"},
-                ["<leader>sg"] = { callback = function (bufnr)
+                end, desc = "[S]earch [H]ere [I]n files"},
+                ["<leader>shg"] = { callback = function (bufnr)
                     builtin.git_files({ cwd = oil.get_current_dir(bufnr) })
-                end, desc = "[S]earch for [G]it files in current directory"},
+                end, desc = "[S]earch [H]ere for [G]it"},
           },
            git = {
             -- Return true to automatically git add/mv/rm files

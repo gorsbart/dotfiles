@@ -23,10 +23,13 @@ return {
 
     vim.keymap.set('n', '<leader>st', function ()
       builtin.find_files({ cwd = "~/Downloads" })
-    end, {desc = "Search Test"})
+    end, {desc = "Search Test"} )
 
+    vim.keymap.set('n', '<leader>sd', function ()
+      builtin.find_files({
+        find_command = { "fd", "--type", "directory", "--hidden", "--exclude", ".git/*" },
+    })    end, {desc = "Search Test"} )
 	end
-
 
 
 }
