@@ -12,7 +12,6 @@ return {
   config = function ()
       local neogit = require('neogit')
       neogit.setup {}
-      vim.keymap.set('n', 'gC', function () neogit.open({ "commit" }) end)
       vim.keymap.set('n', 'gS', function () neogit.open() end)
   end
 }
