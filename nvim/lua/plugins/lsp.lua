@@ -120,18 +120,22 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
           group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
           callback = function(event)
-            local opts = {buffer = event.buf}
+            local builtin = require("telescope.builtin")
 
-            vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts) -- go to definition
-            vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts) -- documentation
-            vim.keymap.set('n', '<leader>w', function() vim.lsp.buf.workspace_symbol() end, opts)
-            vim.keymap.set('n', '<leader>f', function() vim.diagnostic.open_float() end, opts)
-            vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-            vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-            vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
-            vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
-            vim.keymap.set('n', '<leader>r', function() vim.lsp.buf.rename() end, opts)
-            vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+            vim.keymap.set('n', 'gr', builtin.lsp_references, {buffer = event.buf, desc = 'LSP: [G]o to [R]eferences'})
+            vim.keymap.set('n', 'gd', builtin.lsp_definitions, {buffer = event.buf, desc = 'LSP: [G]o to [D]efinitions'})
+            vim.keymap.set('n', 'gI', builtin.lsp_definitions, {buffer = event.buf, desc = 'LSP: [G]o to [I]mplementations'})
+            vim.keymap.set('n', '<leader>D', builtin.lsp_type_definitions, {buffer = event.buf, desc = 'LSP: Type [D]efinitions'})
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {buffer = event.buf, desc = '[R]e[n]ame'})
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer = event.buf, desc = '[G]oto [D]eclaration'})
+
+            vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, {buffer = event.buf, desc = 'LSP: [K]now something about whats under the cursor'})
+            vim.keymap.set('n', '<leader>w', function() vim.lsp.buf.workspace_symbol() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('n', '<leader>f', function() vim.diagnostic.open_float() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
           end,
         })
     end

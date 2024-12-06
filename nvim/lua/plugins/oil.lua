@@ -12,7 +12,7 @@ return {
           delete_to_trash = true,
           watch_for_changes = false,
           keymaps = {
-                ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+                ["<M-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
                 ["<leader>shf"] = { callback = function (bufnr)
                     builtin.find_files({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere for [F]iles"},
