@@ -4,6 +4,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
@@ -83,8 +84,37 @@ return {
             }
         })
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local kind_icons = {
+          Text = "",
+          Method = "󰆧",
+          Function = "󰊕",
+          Constructor = "",
+          Field = "󰇽",
+          Variable = "󰂡",
+          Class = "󰠱",
+          Interface = "",
+          Module = "",
+          Property = "󰜢",
+          Unit = "",
+          Value = "󰎠",
+          Enum = "",
+          Keyword = "󰌋",
+          Snippet = "",
+          Color = "󰏘",
+          File = "󰈙",
+          Reference = "",
+          Folder = "󰉋",
+          EnumMember = "",
+          Constant = "󰏿",
+          Struct = "",
+          Event = "",
+          Operator = "󰆕",
+          TypeParameter = "󰅲",
+        }
 
+
+
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -98,11 +128,31 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
+                { name = 'nvim_lua' },
                 { name = 'nvim_lsp' },
+                { name = 'path' },
                 { name = 'luasnip' }, -- For luasnip users.
-            }, {
                 { name = 'buffer' },
-            })
+            }),
+            formatting = {
+              format = function(entry, vim_item)
+                -- Kind icons
+                vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+                -- Source
+                vim_item.menu = ({
+                  buffer = "[Buf]",
+                  nvim_lsp = "[LSP]",
+                  luasnip = "[Snip]",
+                  nvim_lua = "[Lua]",
+                  latex_symbols = "[TeX]",
+                })[entry.source.name]
+                return vim_item
+              end
+            },
+            experimental = {
+              native_menu = false,
+              ghost_text = true
+            }
         })
 
         vim.diagnostic.config({
@@ -130,12 +180,13 @@ return {
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer = event.buf, desc = '[G]oto [D]eclaration'})
 
             vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, {buffer = event.buf, desc = 'LSP: [K]now something about whats under the cursor'})
-            vim.keymap.set('n', '<leader>w', function() vim.lsp.buf.workspace_symbol() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
-            vim.keymap.set('n', '<leader>f', function() vim.diagnostic.open_float() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
-            vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
-            vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
-            vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
-            vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: <PLHO>'})
+            vim.keymap.set('n', '<leader>w', function() vim.lsp.buf.workspace_symbol() end, {buffer = event.buf, desc = 'LSP: [W]orkspace symbol'})
+            vim.keymap.set('n', '<leader>f', function() vim.diagnostic.open_float() end, {buffer = event.buf, desc = 'LSP: Open [F]loat'})
+            vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, {buffer = event.buf, desc = 'LSP: Next [D]iagnostics'})
+            vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, {buffer = event.buf, desc = 'LSP: Previous [D]iagnostics'})
+            vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, {buffer = event.buf, desc = 'LSP: [C]ode [A]ction'})
+            vim.keymap.set('i', '<M-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: Signature [H]elp'})
+            vim.keymap.set('n', '<M-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: Signature [H]elp'})
           end,
         })
     end
