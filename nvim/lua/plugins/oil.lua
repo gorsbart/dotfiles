@@ -5,6 +5,7 @@ return {
   config = function ()
 
       local builtin = require('telescope.builtin')
+      local multigrep = require("plugins.telescope.multigrep")
       local oil = require("oil")
       oil.setup({
           default_file_explorer = true,
@@ -17,7 +18,7 @@ return {
                     builtin.find_files({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere for [F]iles"},
                 ["<leader>shi"] = { callback = function (bufnr)
-                    builtin.live_grep({ cwd = oil.get_current_dir(bufnr) })
+                    multigrep.live_multigrep({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere [I]n files"},
                 ["<leader>shg"] = { callback = function (bufnr)
                     builtin.git_files({ cwd = oil.get_current_dir(bufnr) })

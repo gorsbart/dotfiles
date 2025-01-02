@@ -64,10 +64,12 @@ return {
       }
     }
 
+    require("plugins.telescope.multigrep").setup()
+
 		vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch for [F]iles'})
 		vim.keymap.set('n', '<leader>s"', builtin.registers, { desc = '[S]earch for Registers'})
 		vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[S]earch for [G]it files'})
-    vim.keymap.set('n', '<leader>si', builtin.live_grep, { desc = '[S]earch [I]n files'})
+    -- vim.keymap.set('n', '<leader>si', builtin.live_grep, { desc = '[S]earch [I]n files'})
     vim.keymap.set('v', '<leader>si', builtin.grep_string, { desc = '[S]earch selection [I]n files'})
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps'})
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
@@ -95,6 +97,7 @@ return {
         previewer = false,
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
+
 
     -- Currently not working as expected
     -- vim.keymap.set('v', '<leader>sgh', builtin.git_bcommits_range, { desc = '[S]earch [G]it [H]istory of highlighted part'})
