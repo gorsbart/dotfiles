@@ -34,7 +34,6 @@ return {
                 "grammarly",
                 "groovyls",
                 "jsonls",
-                "java_language_server",
                 "ts_ls",
                 "kotlin_language_server",
                 "texlab",

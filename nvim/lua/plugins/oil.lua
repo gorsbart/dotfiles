@@ -4,8 +4,7 @@ return {
   dependencies = { { "echasnovski/mini.icons", opts = {} }, 'nvim-telescope/telescope.nvim' },
   config = function ()
 
-      local builtin = require('telescope.builtin')
-      local multigrep = require("plugins.telescope.multigrep")
+      local fzf_lua = require('fzf-lua')
       local oil = require("oil")
       oil.setup({
           default_file_explorer = true,
@@ -15,13 +14,13 @@ return {
           keymaps = {
                 ["<M-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
                 ["<leader>shf"] = { callback = function (bufnr)
-                    builtin.find_files({ cwd = oil.get_current_dir(bufnr) })
+                    fzf_lua.files({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere for [F]iles"},
                 ["<leader>shi"] = { callback = function (bufnr)
-                    multigrep.live_multigrep({ cwd = oil.get_current_dir(bufnr) })
+                    fzf_lua.live_grep_native({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere [I]n files"},
                 ["<leader>shg"] = { callback = function (bufnr)
-                    builtin.git_files({ cwd = oil.get_current_dir(bufnr) })
+                    fzf_lua.git_files({ cwd = oil.get_current_dir(bufnr) })
                 end, desc = "[S]earch [H]ere for [G]it"},
           },
            git = {
