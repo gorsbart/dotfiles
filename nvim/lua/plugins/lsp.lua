@@ -80,6 +80,20 @@ return {
                         }
                     }
                 end,
+                ["jdtls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.jdtls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                runtime = { version = "Lua 5.1" },
+                                diagnostics = {
+                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                                }
+                            }
+                        }
+                    }
+                end,
             }
         })
 
@@ -185,6 +199,7 @@ return {
             vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, {buffer = event.buf, desc = 'LSP: Previous [D]iagnostics'})
             -- vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, {buffer = event.buf, desc = 'LSP: [C]ode [A]ction'})
             vim.keymap.set('n', '<leader>ca', fzf_lua.lsp_code_actions, {buffer = event.buf, desc = 'LSP: [C]ode [A]ction'})
+            vim.keymap.set('v', '<leader>ca', fzf_lua.lsp_code_actions, {buffer = event.buf, desc = 'LSP: [C]ode [A]ction'})
             vim.keymap.set('i', '<M-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: Signature [H]elp'})
             vim.keymap.set('n', '<M-h>', function() vim.lsp.buf.signature_help() end, {buffer = event.buf, desc = 'LSP: Signature [H]elp'})
           end,
