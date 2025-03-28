@@ -32,7 +32,6 @@ return {
 --                "clangd",
 --                "cmake",
                 "grammarly",
-                "groovyls",
                 "jsonls",
                 "jdtls",
                 "ts_ls",
@@ -81,18 +80,7 @@ return {
                     }
                 end,
                 ["jdtls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.jdtls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
+                  return true
                 end,
             }
         })
