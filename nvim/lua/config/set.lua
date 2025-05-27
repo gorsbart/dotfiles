@@ -1,4 +1,6 @@
 
+vim.g.kitty_navigator_password = "neov!MremotekittycontrOOl"
+
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 
