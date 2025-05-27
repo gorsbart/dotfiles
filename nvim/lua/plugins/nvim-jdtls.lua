@@ -87,12 +87,6 @@ return {
         },
         capabilities = capabilities,
 
-        -- 💀
-        -- This is the default if not provided, you can remove it. Or adjust as needed.
-        -- One dedicated LSP server & client will be started per unique root_dir
-        --
-        -- vim.fs.root requires Neovim 0.10.
-        -- If you're using an earlier version, use: require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
         root_dir = root_dir,
 
         -- Here you can configure eclipse.jdt.ls specific settings
@@ -145,22 +139,18 @@ return {
 
             -- require("jdtls.dap").setup_dap_main_class_configs()
 
-            -- vim.keymap.set( "n", "<leader>tt",
-            --   function()
-            --     require("jdtls.dap").test_class({
-            --       config_overrides = type(opts.test) ~= "boolean" and opts.test.config_overrides or nil,
-            --     })
-            --   end, { buffer = args.buf, desc = "Run All [T]est" }
-            -- )
-            --
-            -- vim.keymap.set( "n", "<leader>tr",
-            --   function()
-            --     require("jdtls.dap").test_nearest_method({
-            --       config_overrides = type(opts.test) ~= "boolean" and opts.test.config_overrides or nil,
-            --     })
-            --   end, { buffer = args.buf, desc = "[R]un Nearest [T]est" }
-            -- )
-            -- vim.keymap.set( "n", "<leader>tT", require("jdtls.dap").pick_test, { buffer = args.buf, desc = "Run [T]est" } )
+            vim.keymap.set( "n", "<leader>tt",
+              function()
+                require("jdtls.dap").test_class()
+              end, { buffer = args.buf, desc = "Run All [T]est" }
+            )
+
+            vim.keymap.set( "n", "<leader>tr",
+              function()
+                require("jdtls.dap").test_nearest_method()
+              end, { buffer = args.buf, desc = "[R]un Nearest [T]est" }
+            )
+            vim.keymap.set( "n", "<leader>tT", require("jdtls.dap").pick_test, { buffer = args.buf, desc = "Run [T]est" } )
         end
       end
     })
