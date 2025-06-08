@@ -8,3 +8,5 @@ function searchpl
 end
 
 set -x MANPAGER "nvim -c 'Man!' -o -"
+set -x DELTA_PAGER "nvim -c \"lua require('util').colorize()\""
+set -x PAGER "nvim -c \"lua require('util').colorize()\""

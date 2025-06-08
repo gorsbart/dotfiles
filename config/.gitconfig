@@ -1,0 +1,41 @@
+[user]
+	email = gorski.bartosz@icloud.com
+	name = gorsbart
+; [diff]
+;     tool = kitty
+;     guitool = kitty.gui
+; [difftool]
+;     prompt = false
+;     trustExitCode = true
+; [difftool "kitty"]
+;     cmd = kitten diff $LOCAL $REMOTE
+; [difftool "kitty.gui"]
+;     cmd = kitten diff $LOCAL $REMOTE
+
+[core]
+    pager = delta -s --hyperlinks
+
+[interactive]
+    diffFilter = delta --color-only --paging=never --line-numbers --hyperlinks -s
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictstyle = zdiff3
+
+
+[difftool]
+  prompt = false
+  trustExitCode = true
+
+[difftool "delta"]
+  cmd = delta -s --color-only --line-numbers --hyperlinks $LOCAL $REMOTE
+
+[difftool "delta.gui"]
+  cmd = delta -s --color-only --line-numbers --hyperlinks $LOCAL $REMOTE
+
+[diff]
+  tool = delta
+  guitool = delta.gui
