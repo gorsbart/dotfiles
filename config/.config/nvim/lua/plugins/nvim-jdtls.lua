@@ -42,15 +42,6 @@ return {
       local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name .. "/workspace"
 
 
-      local cmp_lsp = require("cmp_nvim_lsp")
-      local capabilities = vim.tbl_deep_extend(
-        "force",
-        {},
-        vim.lsp.protocol.make_client_capabilities(),
-        cmp_lsp.default_capabilities()
-      )
-
-
       local bundles = {} ---@type string[]
       local java_dbg_jars_pattern = mason_share .. "/java-debug-adapter/com.microsoft.java.debug.plugin-*.jar"
       local java_test_jars_pattern = mason_share .. "/java-test/*.jar"
@@ -85,7 +76,6 @@ return {
           '-configuration', config_path,
           '-data', workspace_dir
         },
-        capabilities = capabilities,
 
         root_dir = root_dir,
 
