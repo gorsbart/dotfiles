@@ -6,7 +6,9 @@ return {
   cmd = "Copilot",
   event = "VeryLazy",
   config = function()
-    require("copilot").setup({})
+    require("copilot").setup({
+      copilot_node_command = vim.fn.expand("$HOME") .. "/.nvm/versions/node/v20.19.2/bin/node", -- Node.js version must be > 20
+    })
     vim.api.nvim_create_autocmd("User", {
       pattern = "BlinkCmpMenuOpen",
       callback = function()
