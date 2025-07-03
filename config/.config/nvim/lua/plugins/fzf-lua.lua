@@ -50,6 +50,11 @@ return {
     vim.keymap.set('n', '<leader>sdd', fzf_lua.diagnostics_document, { desc = '[S]earch [D]iagnostics in document' })
     vim.keymap.set('n', '<leader>sdw', fzf_lua.diagnostics_workspace, { desc = '[S]earch [D]iagnostics in workspace' })
 
+    --tags
+    vim.keymap.set('n', '<leader>s]', fzf_lua.tags_grep_cword, { desc = '[S]earch tags for word under cursor' })
+    vim.keymap.set('v', '<leader>s]', fzf_lua.tags_grep_visual, { desc = '[S]earch tags for visual selection' })
+
+
     vim.keymap.set('n', '<leader>sgb', fzf_lua.git_branches, { desc = '[S]earch [G]it [B]ranches'})
     vim.keymap.set('n', '<leader>sgc', fzf_lua.git_commits, { desc = '[S]earch [G]it [C]ommits'})
     vim.keymap.set('n', '<leader>sgh', fzf_lua.git_bcommits, { desc = '[S]earch [G]it [H]istory of file'})
