@@ -11,8 +11,12 @@ set -gx MANPAGER "nvim -c 'Man!' -o -"
 set -gx DELTA_PAGER "nvim -c \"lua require('util').colorize()\""
 set -gx PAGER "nvim -c \"lua require('util').colorize()\""
 set -gx EDITOR nvim
+<<<<<<< HEAD
 set -gx SDKMAN_DIR "$HOME/.sdkman"
+||||||| parent of 216cec7 (Mac os specific settings)
+=======
 set -gx XDG_CONFIG_HOME "$HOME/.config"
+>>>>>>> 216cec7 (Mac os specific settings)
 
 function nvm
     bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv

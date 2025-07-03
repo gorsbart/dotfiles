@@ -1,4 +1,4 @@
-function ls --description 'alias ls ls --color=auto --hyperlink=auto'
- command ls --color=auto --hyperlink=auto $argv
+function ls --wraps=eza --wraps='eza --hyperlink' --description 'alias ls=eza --hyperlink'
+  eza --hyperlink $argv
         
 end

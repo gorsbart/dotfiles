@@ -2,6 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
+  tag = "v0.0.27",
   opts = {
     -- add any opts here
     -- for example

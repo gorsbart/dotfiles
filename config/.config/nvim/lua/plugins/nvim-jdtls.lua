@@ -81,28 +81,18 @@ return {
         settings = {
           java = {
             configuration = {
+              -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+              -- And search for `interface RuntimeOption`
+              -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
               runtimes = {
                 {
-                  name = "JavaSE-11",
-                  path = "/usr/lib/jvm/java-11-openjdk/",
-                },
-                {
                   name = "JavaSE-17",
-                  path = "/usr/lib/jvm/java-17-openjdk/",
-                },
-                {
-                  name = "JavaSE-21",
-                  path = "/usr/lib/jvm/java-21-openjdk/",
-                },
-                {
-                  name = "JavaSE-24",
-                  path = "/usr/lib/jvm/java-24-openjdk/",
-                },
+                  path = "~/Library/Java/JavaVirtualMachines/azul-17.0.14-1/Contents/Home",
+                }
               }
             }
           }
         },
-
         -- Language server `initializationOptions`
         -- You need to extend the `bundles` with paths to jar files
         -- if you want to use additional eclipse.jdt.ls plugins.
