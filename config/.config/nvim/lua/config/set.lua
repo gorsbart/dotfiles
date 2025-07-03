@@ -3,10 +3,11 @@ vim.g.kitty_navigator_password = "neov!MremotekittycontrOOl"
 
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -34,3 +35,23 @@ vim.opt.colorcolumn = "90"
 vim.opt.splitright = true
 
 vim.opt.foldenable = false
+
+-- Add your abbreviations in this dictionary
+local abbreviations = {
+  -- spelling
+  teh = "the",
+  -- expansions
+  btw = "by the way",
+  imo = "in my opinion",
+  nvim = "neovim",
+  i19 = "internationalization",
+  -- java
+  pu = "public",
+  st = "static",
+  vo = "void",
+  re = "return",
+}
+
+for abbr, expanded in pairs(abbreviations) do
+  vim.cmd("iab " .. abbr .. " " .. expanded)
+end

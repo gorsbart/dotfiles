@@ -8,6 +8,7 @@ return {
 
 
 		local fzf_lua = require('fzf-lua')
+    local actions = fzf_lua.actions
     fzf_lua.setup({
       previewers = {
         builtin = {
@@ -17,6 +18,19 @@ return {
             ["jpg"] = { "chafa", "-f", "symbols" },
           }
         }
+      },
+      actions = {
+        files = {
+          ["enter"]       = actions.file_edit_or_qf,
+          ["alt-s"]       = actions.file_split,
+          ["alt-v"]       = actions.file_vsplit,
+          ["alt-t"]       = actions.file_tabedit,
+          ["alt-q"]       = actions.file_sel_to_qf,
+          ["alt-Q"]       = actions.file_sel_to_ll,
+          ["alt-i"]       = actions.toggle_ignore,
+          ["alt-h"]       = actions.toggle_hidden,
+          ["alt-f"]       = actions.toggle_follow,
+        },
       },
     })
 
@@ -35,6 +49,11 @@ return {
     vim.keymap.set('n', '<leader>sW', fzf_lua.grep_cWORD, { desc = '[S]earch current [W]ORD'})
     vim.keymap.set('n', '<leader>sdd', fzf_lua.diagnostics_document, { desc = '[S]earch [D]iagnostics in document' })
     vim.keymap.set('n', '<leader>sdw', fzf_lua.diagnostics_workspace, { desc = '[S]earch [D]iagnostics in workspace' })
+
+    --tags
+    vim.keymap.set('n', '<leader>s]', fzf_lua.tags_grep_cword, { desc = '[S]earch tags for word under cursor' })
+    vim.keymap.set('v', '<leader>s]', fzf_lua.tags_grep_visual, { desc = '[S]earch tags for visual selection' })
+
 
     vim.keymap.set('n', '<leader>sgb', fzf_lua.git_branches, { desc = '[S]earch [G]it [B]ranches'})
     vim.keymap.set('n', '<leader>sgc', fzf_lua.git_commits, { desc = '[S]earch [G]it [C]ommits'})

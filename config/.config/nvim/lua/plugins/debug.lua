@@ -44,102 +44,102 @@ return {
         name = 'codelldb'
       }
 
-        dap.configurations.java = {{
-            type = "java",
-            request = "attach",
-            name = "Debug (Attach) - Remote",
-            hostName = "127.0.0.1",
-            port = 5005,
-          },
-        }
+      dap.configurations.java = {{
+        type = "java",
+        request = "attach",
+        name = "Debug (Attach) - Remote",
+        hostName = "127.0.0.1",
+        port = 5005,
+      }}
+    
 
 
 
-      dap.configurations.c = {
-          {
-              type = 'codelldb',
-              request = 'launch',
-              program = function()
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
-              end,
-              --program = '${fileDirname}/${fileBasenameNoExtension}',
-              cwd = '${workspaceFolder}',
-              terminal = 'integrated'
-          }
+    dap.configurations.c = {
+      {
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
+        end,
+        --program = '${fileDirname}/${fileBasenameNoExtension}',
+        cwd = '${workspaceFolder}',
+        terminal = 'integrated'
       }
+    }
 
-      dap.configurations.cpp = dap.configurations.c
+    dap.configurations.cpp = dap.configurations.c
 
-      dap.configurations.rust = {
-          {
-              type = 'codelldb',
-              request = 'launch',
-              program = function()
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
-              end,
-              cwd = '${workspaceFolder}',
-              terminal = 'integrated',
-              sourceLanguages = { 'rust' }
-          }
+    dap.configurations.rust = {
+      {
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        terminal = 'integrated',
+        sourceLanguages = { 'rust' }
       }
+    }
 
-      dap.configurations.kotlin = {
-          {
-              type = "kotlin",
-              request = "launch",
-              name = "This file",
-              -- may differ, when in doubt, whatever your project structure may be,
-              -- it has to correspond to the class file located at `build/classes/`
-              -- and of course you have to build before you debug
-              mainClass = function()
-                  local root = vim.fs.find("src", { path = vim.uv.cwd(), upward = true, stop = vim.env.HOME })[1] or ""
-                  local fname = vim.api.nvim_buf_get_name(0)
-                  -- src/main/kotlin/websearch/Main.kt -> websearch.MainKt
-                  return fname:gsub(root, ""):gsub("main/kotlin/", ""):gsub(".kt", "Kt"):gsub("/", "."):sub(2, -1)
-              end,
-              projectRoot = "${workspaceFolder}",
-              jsonLogFile = "",
-              enableJsonLogging = false,
-          },
-          {
-              -- Use this for unit tests
-              -- First, run 
-              -- ./gradlew --info cleanTest test --debug-jvm
-              -- then attach the debugger to it
-              type = "kotlin",
-              request = "attach",
-              name = "Attach to debugging session",
-              port = 5005,
-              args = {},
-              projectRoot = vim.fn.getcwd,
-              hostName = "localhost",
-              timeout = 2000,
-          },
+    dap.configurations.kotlin = {
+      {
+        type = "kotlin",
+        request = "launch",
+        name = "This file",
+        -- may differ, when in doubt, whatever your project structure may be,
+        -- it has to correspond to the class file located at `build/classes/`
+        -- and of course you have to build before you debug
+        mainClass = function()
+          local root = vim.fs.find("src", { path = vim.uv.cwd(), upward = true, stop = vim.env.HOME })[1] or ""
+          local fname = vim.api.nvim_buf_get_name(0)
+          -- src/main/kotlin/websearch/Main.kt -> websearch.MainKt
+          return fname:gsub(root, ""):gsub("main/kotlin/", ""):gsub(".kt", "Kt"):gsub("/", "."):sub(2, -1)
+        end,
+        projectRoot = "${workspaceFolder}",
+        jsonLogFile = "",
+        enableJsonLogging = false,
+      },
+      {
+        -- Use this for unit tests
+        -- First, run 
+        -- ./gradlew --info cleanTest test --debug-jvm
+        -- then attach the debugger to it
+        type = "kotlin",
+        request = "attach",
+        name = "Attach to debugging session",
+        port = 5005,
+        args = {},
+        projectRoot = vim.fn.getcwd,
+        hostName = "localhost",
+        timeout = 2000,
+      },
 
-      }
+    }
 
-      ui.setup()
-      -- setup dap config by VsCode launch.json file
-      local vscode = require("dap.ext.vscode")
-      local json = require("plenary.json")
-      vscode.json_decode = function(str)
-        return vim.json.decode(json.json_strip_comments(str))
-      end
-
-      dap.listeners.before.attach.dapui_config = function()
-        ui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        ui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        ui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        ui.close()
-      end
-
-
+    ui.setup()
+    -- setup dap config by VsCode launch.json file
+    local vscode = require("dap.ext.vscode")
+    local json = require("plenary.json")
+    vscode.json_decode = function(str)
+      return vim.json.decode(json.json_strip_comments(str))
     end
-  }
+
+    dap.listeners.before.attach.dapui_config = function()
+      ui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      ui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      ui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      ui.close()
+    end
+
+
+  end
+}
 }

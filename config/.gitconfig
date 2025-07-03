@@ -1,6 +1,6 @@
-[user]
-	email = gorski.bartosz@icloud.com
-	name = gorsbart
+[include]
+  path = .gitconfig-credentials
+
 ; [diff]
 ;     tool = kitty
 ;     guitool = kitty.gui
