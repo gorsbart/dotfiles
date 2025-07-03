@@ -10,7 +10,8 @@ end
 set -x MANPAGER "nvim -c 'Man!' -o -"
 set -x DELTA_PAGER "nvim -c \"lua require('util').colorize()\""
 set -x PAGER "nvim -c \"lua require('util').colorize()\""
+set -x XDG_CONFIG_HOME "$HOME/.config"
 
 function nvm
-    bass source /usr/share/nvm/init-nvm.sh --no-use ';' nvm $argv
+    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
 end
