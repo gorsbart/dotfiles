@@ -13,5 +13,5 @@ set -gx PAGER "nvim -c \"lua require('util').colorize()\""
 set -gx EDITOR nvim
 
 function nvm
-    bass source /usr/share/nvm/init-nvm.sh --no-use ';' nvm $argv
+    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
 end
