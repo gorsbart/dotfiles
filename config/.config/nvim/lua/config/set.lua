@@ -43,7 +43,6 @@ local abbreviations = {
   -- expansions
   btw = "by the way",
   imo = "in my opinion",
-  nvim = "neovim",
   i19 = "internationalization",
   -- java
   pu = "public",
