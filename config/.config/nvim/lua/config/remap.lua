@@ -10,6 +10,3 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>y", "\"+y")
-
-vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "Next on quickfix list" })
-vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz", { desc = "Previous on quickfix list" })
