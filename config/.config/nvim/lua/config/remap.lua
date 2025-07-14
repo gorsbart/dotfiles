@@ -11,6 +11,7 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>y", "\"+y")
 
 
+vim.keymap.set("i", "<C-e>", "<END>")
 
 vim.keymap.set("n", "<leader>q", function ()
   local timeout = vim.o.timeoutlen

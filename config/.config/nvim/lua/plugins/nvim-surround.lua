@@ -17,6 +17,7 @@ return {
             change = "cz",
             change_line = "cZ",
           },
+          move_cursor = "sticky",
         })
     end
 }
