@@ -36,6 +36,9 @@ vim.opt.splitright = true
 
 vim.opt.foldenable = false
 
+vim.opt.fillchars:append { diff = "╱" }
+
+
 -- Add your abbreviations in this dictionary
 local abbreviations = {
   -- spelling

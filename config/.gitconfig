@@ -23,8 +23,13 @@
     dark = true      # or light = true, or omit for auto-detection
 
 [merge]
-    conflictstyle = zdiff3
+  conflictstyle = zdiff3
+  tool = nvim
+  guitool = nvim
 
+[mergetool "nvim"]
+    ; cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c DiffviewOpen"
+    cmd = "nvim -d -c \"MergeviewOpen\" -c \"norm ]c\" -c \"tabonly\""
 
 [difftool]
   prompt = false
