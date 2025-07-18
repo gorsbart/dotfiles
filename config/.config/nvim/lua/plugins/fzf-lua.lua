@@ -35,6 +35,7 @@ return {
     vim.keymap.set('n', '<leader>sh', fzf_lua.helptags, { desc = '[S]earch [H]elp'})
     vim.keymap.set('n', '<leader>s.', fzf_lua.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)'})
     vim.keymap.set('n', '<leader>sw', fzf_lua.grep_cword, { desc = '[S]earch current [W]ord'})
+    vim.keymap.set('v', '<leader>sw', fzf_lua.grep_visual, { desc = '[S]earch current [W]ords in visual selection'})
     vim.keymap.set('n', '<leader>sW', fzf_lua.grep_cWORD, { desc = '[S]earch current [W]ORD'})
     vim.keymap.set('n', '<leader>sdd', fzf_lua.diagnostics_document, { desc = '[S]earch [D]iagnostics in document' })
     vim.keymap.set('n', '<leader>sdw', fzf_lua.diagnostics_workspace, { desc = '[S]earch [D]iagnostics in workspace' })

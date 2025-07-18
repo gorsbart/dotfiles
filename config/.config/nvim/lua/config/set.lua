@@ -38,6 +38,8 @@ vim.opt.foldenable = false
 
 vim.opt.fillchars:append { diff = "╱" }
 
+-- paste registers in terminal windows
+vim.keymap.set("t", "<C-r>", [['<C-\><C-N>"'.nr2char(getchar()).'pi']], { expr = true })
 
 -- Add your abbreviations in this dictionary
 local abbreviations = {
