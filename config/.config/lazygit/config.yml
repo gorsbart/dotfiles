@@ -5,5 +5,17 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+    # externalDiffCommand: nvim -d -c \"DiffviewOpen\" -c \"norm ]c\" -c \"tabonly\"
+    mainBranches:
+    - master
+    - main
+    - develop
+
 os:
-  editPreset: 'nvim'
+  editPreset: ""
+
+
+gui:
+  sidePanelWidth: 0.18
+  tabWidth: 2
+  nerdFontsVersion: "2"
