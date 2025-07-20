@@ -12,7 +12,7 @@ git:
     - develop
 
 os:
-  editPreset: ""
+  editPreset: "nvim"
 
 
 gui:
