@@ -13,7 +13,8 @@
     cmd = kitten diff $LOCAL $REMOTE
 
 [core]
-    pager = delta -s --hyperlinks
+  pager = delta -s --hyperlinks
+	attributesfile = ~/.gitattributes
 
 [blame]
     pager = delta -s --hyperlinks
@@ -35,21 +36,16 @@
   guitool = nvim
 
 [mergetool "nvim"]
-    ; cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c DiffviewOpen"
     cmd = "nvim -d -c \"MergeviewOpen\" -c \"norm ]c\" -c \"tabonly\""
 
 [difftool]
   prompt = false
   trustExitCode = true
 
-
-[difftool "delta.gui"]
-  cmd = git diff $LOCAL $REMOTE | delta -s --color-only --line-numbers --hyperlinks | nvim
-
-[difftool "delta"]
-  cmd = git diff $LOCAL $REMOTE | delta -s --color-only --line-numbers --hyperlinks  
-
 [diff]
   tool = nvimdiff
   guitool = nvimdiff
   colorMoved = default
+
+[diff "image"]
+  textconv = chafa
