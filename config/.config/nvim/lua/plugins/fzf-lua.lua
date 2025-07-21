@@ -17,7 +17,10 @@ return {
             ["png"] = { "chafa", "-f", "symbols" }, --TODO improve it as there is a snack for that https://github.com/folke/snacks.nvim/blob/main/docs/image.md
             ["jpg"] = { "chafa", "-f", "symbols" },
           }
-        }
+        },
+        git_diff = {
+          pager = [[delta --width=$COLUMNS --hunk-header-style="omit" --paging=never --file-style="omit"]],          -- git-delta is automatically detected as pager, set `pager=false`
+        },
       },
       actions = {
       },
@@ -45,6 +48,7 @@ return {
     vim.keymap.set('v', '<leader>s]', fzf_lua.tags_grep_visual, { desc = '[S]earch tags for visual selection' })
 
 
+    vim.keymap.set('n', '<leader>sgs', fzf_lua.git_status, { desc = '[S]earch [G]it [S]tatus'})
     vim.keymap.set('n', '<leader>sgb', fzf_lua.git_branches, { desc = '[S]earch [G]it [B]ranches'})
     vim.keymap.set('n', '<leader>sgc', fzf_lua.git_commits, { desc = '[S]earch [G]it [C]ommits'})
     vim.keymap.set('n', '<leader>sgh', fzf_lua.git_bcommits, { desc = '[S]earch [G]it [H]istory of file'})
