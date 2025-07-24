@@ -6,6 +6,10 @@ return {
       char = {
         enabled = false,
       }
+    },
+    label = {
+      -- allow uppercase labels
+      uppercase = false,
     }
   },
   -- stylua: ignore
