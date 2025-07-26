@@ -1,7 +1,7 @@
 return {
   'stevearc/oil.nvim',
   opts = {},
-  dependencies = { { "echasnovski/mini.icons", opts = {} }, 'nvim-telescope/telescope.nvim' },
+  dependencies = { { "echasnovski/mini.icons", opts = {} }},
   config = function ()
 
       local fzf_lua = require('fzf-lua')
