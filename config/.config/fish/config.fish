@@ -11,9 +11,14 @@ set -gx MANPAGER "nvim -c 'Man!' -o -"
 set -gx DELTA_PAGER "nvim -c \"lua require('util').colorize()\""
 set -gx PAGER "nvim -c \"lua require('util').colorize()\""
 set -gx EDITOR nvim
+set -gx SDKMAN_DIR "$HOME/.sdkman"
 
 function nvm
     bass source /usr/share/nvm/init-nvm.sh --no-use ';' nvm $argv
+end
+
+function sdk 
+  bass source $HOME/.sdkman/bin/sdkman-init.sh ';' sdk $argv
 end
 
 

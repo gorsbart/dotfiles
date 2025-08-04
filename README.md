@@ -2,5 +2,5 @@
 My personal dotfiles
 
 ## Dependencies
-git-delta imagemagick lazygit neovim kitty fish chafa clang starship
+git-delta imagemagick lazygit neovim kitty fish chafa clang starship sdkman
 

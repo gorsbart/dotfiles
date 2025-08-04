@@ -73,7 +73,8 @@ truncate_to_repo = false
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"Projects" = "󰲋 "
+"Work" = "󰲋 "
 
 [git_branch]
 symbol = ""
