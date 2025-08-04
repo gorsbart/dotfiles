@@ -29,11 +29,7 @@ return {
         config_path = mason_packages .. "/jdtls/config_win"
       end
 
-      local java_exec = vim.fn.exepath("java") or "java"
-      if vim.env.JAVA_HOME then
-        java_exec = vim.env.JAVA_HOME .. "/bin/java"
-      end
-
+      local java_exec = vim.fn.expand("$HOME/.sdkman/candidates/java/24.0.2-open/bin/java")
 
       local lombok_jar = mason_share .. "/jdtls/lombok.jar"
 
@@ -84,6 +80,26 @@ return {
         -- for a list of options
         settings = {
           java = {
+            configuration = {
+              runtimes = {
+                {
+                  name = "JavaSE-11",
+                  path = "/usr/lib/jvm/java-11-openjdk/",
+                },
+                {
+                  name = "JavaSE-17",
+                  path = "/usr/lib/jvm/java-17-openjdk/",
+                },
+                {
+                  name = "JavaSE-21",
+                  path = "/usr/lib/jvm/java-21-openjdk/",
+                },
+                {
+                  name = "JavaSE-24",
+                  path = "/usr/lib/jvm/java-24-openjdk/",
+                },
+              }
+            }
           }
         },
 
