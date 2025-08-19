@@ -10,6 +10,9 @@ return {
     label = {
       -- allow uppercase labels
       uppercase = false,
+    },
+    jump = {
+      autojump = true,
     }
   },
   -- stylua: ignore
