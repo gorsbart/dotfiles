@@ -1,7 +1,7 @@
-pragma ComponentBehavior: Bound
-import Quickshell // for PanelWindow
-import QtQuick // for Text
+import Quickshell
+import QtQuick
 import Quickshell.Io
+// import your widgets module if needed
 
 Scope {
     id: root
@@ -10,6 +10,7 @@ Scope {
         model: Quickshell.screens
 
         PanelWindow {
+            color: Colors.base
             required property var modelData
             screen: modelData
             anchors {
@@ -18,17 +19,26 @@ Scope {
                 right: true
             }
 
-
-            
             implicitHeight: 30
 
-            ClockWidget {
-                // center the bar in its parent component (the window)
+            // Your MediaControl widget
+            MediaControlWidget {
+                id: mediaControls
+                // style properties if needed
                 anchors.verticalCenter: parent.verticalCenter
-                                anchors.margins: 10
-                anchors.right: parent.right
+                anchors.left: parent.left
+                anchors.margins: 10
+                // maybe specify width / height or let widget intrinsic size
             }
 
+            // Existing Clock
+            ClockWidget {
+                color: Colors.text
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.margins: 10
+            }
         }
     }
 }
+
